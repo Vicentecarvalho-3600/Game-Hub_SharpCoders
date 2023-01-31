@@ -59,7 +59,7 @@ public class BatalhaNaval {
             Console.WriteLine();
 
         }
-        Console.WriteLine($"------{AguaOuBomba}------\n ------Faltam {QuantidadeBarcos} submarinos------");
+        Console.WriteLine($"------{AguaOuBomba}------\n ------Faltam {QuantidadeBarcos} Barcos------");
     }
 
     public void SelecionarCasa(int coluna, int linha) {
@@ -86,7 +86,7 @@ public class BatalhaNaval {
     public void ImprimeVitoria() {
         Console.WriteLine("---------------------------------------------------------------------------");
         Console.WriteLine("-------------------------------Parabéns------------------------------------");
-        Console.WriteLine("---------------------------------------------------------------------------");
+        Console.WriteLine($"----------------------------------{QuantidadeBarcos}----------------------------------------");
         Console.WriteLine($"-----------------------------Tentativas: {Tentativas}--------------------------------");
 
     }

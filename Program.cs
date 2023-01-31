@@ -13,6 +13,7 @@ public class Program {
         do {
             MenuView.BemVindo();
             MenuView.ShowMenu();
+            Console.Write("Selecione um opção: ");
             option = int.Parse(Console.ReadLine());
 
             switch(option){
@@ -36,7 +37,7 @@ public class Program {
                         jogoDaVelha.Rodadas();
 
                     } while (jogoDaVelha.tentativas < 9);
-                    Console.WriteLine("Pressine Tecla Para Sair: ");
+                    Console.Write("Pressine Tecla Para Sair: ");
                     Console.ReadKey();
                     break;
                 case 2:
@@ -50,7 +51,7 @@ public class Program {
                         batalhaNaval.SelecionarCasa(coluna, linha);
                     } while (batalhaNaval.QuantidadeBarcos > 0);
                     batalhaNaval.ImprimeVitoria();
-                    Console.WriteLine("Pressine Tecla Para Sair: ");
+                    Console.Write("Pressine Tecla Para Sair: ");
                     Console.ReadKey();
                     break;
             }
