@@ -127,9 +127,11 @@ public class JogoDaVelha  {
                 matriz[0, 2] == matriz[1, 2] && matriz[1, 2] == matriz[2, 2]) {
             ImprimirGanhador();
             tentativas = 10;
+
         }
         else if (tentativas == 8) {
             Console.WriteLine("empate ninguem ganhou");
+
         }
 
     }

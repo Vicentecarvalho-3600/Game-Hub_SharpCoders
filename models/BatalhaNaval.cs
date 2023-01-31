@@ -13,14 +13,15 @@ public class BatalhaNaval {
     private int Tentativas = 0;
     private int Coluna;
     private int Linha;
-    private int QuantidadeBarcos = 0;
+    public int QuantidadeBarcos = 0;
+    private string AguaOuBomba = "";
 
 
     Random rnd = new Random();
 
     public BatalhaNaval() {
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 2; i++) {
             num1 = rnd.Next(8);
             num2 = rnd.Next(8);
 
@@ -37,6 +38,7 @@ public class BatalhaNaval {
     }
 
     public void Apresentar() {
+        Console.Clear();
         for (int i = 0; i <= 7; i++) {
             for (int j = 0; j <= 7; j++) {
                 if (tabela[i, j] == "N" || tabela[i, j] == "B") {
@@ -55,27 +57,29 @@ public class BatalhaNaval {
                 }
             }
             Console.WriteLine();
+
         }
+        Console.WriteLine($"------{AguaOuBomba}------\n ------Faltam {QuantidadeBarcos} submarinos------");
     }
 
     public void SelecionarCasa(int coluna, int linha) {
-        // Console.WriteLine("Introduza a coluna:(1 ao 8)");
         Coluna = coluna;
-        Coluna--;
-        // Console.WriteLine("Introduza a linha:(1 ao 8)");
+        Coluna--;    
         Linha = linha;
         Linha--;
         Tentativas++;
-
+        
         if (tabela[Linha, Coluna] == "N") {
             QuantidadeBarcos--;
-            Console.WriteLine($"------BOMBA------\n ------Faltam {QuantidadeBarcos} submarinos------");
+            //Console.WriteLine($"------BOMBA------\n ------Faltam {QuantidadeBarcos} submarinos------");
             tabela[Linha, Coluna] = "B";
+            AguaOuBomba = "BOMBA";
             Console.Beep();
         }
         else {
             tabela[Linha, Coluna] = "A";
-            Console.WriteLine($"------AGUA------\n ------Faltam {QuantidadeBarcos} submarinos------");
+            //Console.WriteLine($"------AGUA------\n ------Faltam {QuantidadeBarcos} submarinos------");
+            AguaOuBomba = "AGUA";
         }
     }
 

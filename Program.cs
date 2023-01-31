@@ -1,25 +1,62 @@
-﻿using GameHub_SharpCoders.helper;
-using GameHub_SharpCoders.models;
+﻿using GameHub_SharpCoders.models;
 using GameHub_SharpCoders.view;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace GameHub;
 public class Program {
     static void Main(string[] args) {
 
-        /*
-        jogo.MostrarCampo();
+        int option;
+        
 
-        jogo.AdicionarJogador("ana");
-        jogo.AdicionarJogador("vicente");
+        do {
+            MenuView.BemVindo();
+            MenuView.ShowMenu();
+            option = int.Parse(Console.ReadLine());
 
-        jogo.ListaJogadores();
-        */
+            switch(option){
+                case 0:
+                    Console.WriteLine();
+                    break;
+                case 1:
+                    JogoDaVelha jogoDaVelha = new JogoDaVelha();
+                    do {
+                        Console.Clear();
+                        jogoDaVelha.Apresentar();
+                        Console.WriteLine($"Rodada {jogoDaVelha.tentativas + 1}º vez {jogoDaVelha.TurnoAtual()}");
+                        Console.WriteLine("selecione uma casa de 1 a 9");
+                        string casa = (Console.ReadLine());
+                        while (jogoDaVelha.VerificarvalorDaCasa(casa)) {
+                            Console.WriteLine("Valor invalido digite novamente!!");
+                            casa = Console.ReadLine();
+                        }
+                        jogoDaVelha.SelecionarCasa(casa);
+                        jogoDaVelha.VerificarCondicaoDeVitoria();
+                        jogoDaVelha.Rodadas();
 
-        Crud dados= new Crud();
+                    } while (jogoDaVelha.tentativas < 9);
+                    Console.WriteLine("Pressine Tecla Para Sair: ");
+                    Console.ReadKey();
+                    break;
+                case 2:
+                    BatalhaNaval batalhaNaval = new BatalhaNaval();
+                    do {
+                        batalhaNaval.Apresentar();
+                        Console.Write("Selecione Coluna: ");
+                        int coluna = int.Parse(Console.ReadLine());
+                        Console.Write("Selecione Linha: ");
+                        int linha = int.Parse(Console.ReadLine());
+                        batalhaNaval.SelecionarCasa(coluna, linha);
+                    } while (batalhaNaval.QuantidadeBarcos > 0);
+                    batalhaNaval.ImprimeVitoria();
+                    Console.WriteLine("Pressine Tecla Para Sair: ");
+                    Console.ReadKey();
+                    break;
+            }
+        
 
-        dados.RegistarNovoUsuario("Vicente", "123456");
-        dados.RegistarNovoUsuario("Ana", "123456");
+        } while(option != 0);
 
     }
 }
